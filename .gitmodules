@@ -1,0 +1,6 @@
+[submodule "SQLiteGlue-src"]
+	path = SQLiteGlue-src
+	url = https://github.com/sulite/SQLiteGlue-src.git
+[submodule "sqlite-amalgamation"]
+	path = sqlite-amalgamation
+	url = https://github.com/sulite/sqlite-amalgamation.git
