@@ -12,11 +12,11 @@ TBD
 
 ## First step
 
-    $ `make init` # include `SQLiteGlue-src` & `sqlite-amalgamation` subprojects
+    $ make init # include `SQLiteGlue-src` & `sqlite-amalgamation` subprojects
 
 ## Normal build
 
-    $ `make`
+    $ make
 
 **IMPORTANT:** Please do `make init` first otherwise it will not build.
 
