@@ -22,6 +22,9 @@ LOCAL_PATH:= $(call my-dir)
 #
 
 src_files := \
+	../../Android-sqlite-native-driver/native/sqlc_all.c
+
+src_files += \
 	cmemory.c          cstring.c          \
 	cwchar.c           locmap.c           \
 	punycode.c         putil.c            \
@@ -157,11 +160,6 @@ src_files += \
         vzone.cpp       fphdlimp.cpp fpositer.cpp\
         locdspnm.cpp    decnumstr.cpp ucol_wgt.cpp
 
-src_files += 	\
-		../../SQLiteGlue-src/native/SQLiteGlue_JNI.c \
-		../../SQLiteGlue-src/native/sqlg.c \
-		../../sqlite-amalgamation/sqlite3.c
-
 c_includes := \
 	$(LOCAL_PATH)
 
@@ -182,8 +180,13 @@ local_ldlibs := -lm -llog
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(src_files)
 LOCAL_C_INCLUDES := $(c_includes)
-LOCAL_CFLAGS := $(local_cflags) -DPIC -fPIC -DANDROID_NDK -Dfdatasync=fsync -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_ICU -DSQLITE_ENABLE_FTS3_PARENTHESIS
+LOCAL_C_INCLUDES += ../../Android-sqlite-native-driver
+LOCAL_C_INCLUDES += ../../sqlite-amalgamation
+LOCAL_CFLAGS := $(local_cflags) -DPIC -fPIC -DANDROID_NDK -Dfdatasync=fsync
+LOCAL_CFLAGS += -DSQLITE_ENABLE_ICU
+LOCAL_CFLAGS += -DSQLITE_TEMP_STORE=2 -DSQLITE_THREADSAFE=2
+LOCAL_CFLAGS += -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE
 LOCAL_LDLIBS += $(local_ldlibs)
 LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE := libsuliteicu
+LOCAL_MODULE := sqlc-native-driver
 include $(BUILD_SHARED_LIBRARY)

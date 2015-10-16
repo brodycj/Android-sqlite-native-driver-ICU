@@ -1,6 +1,6 @@
-[submodule "SQLiteGlue-src"]
-	path = SQLiteGlue-src
-	url = https://github.com/sulite/SQLiteGlue-src.git
 [submodule "sqlite-amalgamation"]
 	path = sqlite-amalgamation
 	url = https://github.com/sulite/sqlite-amalgamation.git
+[submodule "Android-sqlite-native-driver"]
+	path = Android-sqlite-native-driver
+	url = https://github.com/liteglue/Android-sqlite-native-driver
